@@ -1,0 +1,24 @@
+# Built binaries
+/app/cloud-seminar-demo
+*.exe
+*.test
+/out/
+
+# Local environment and credentials
+.env
+.env.*
+*.pem
+credentials
+credentials.json
+
+# Editor and OS files
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Helm packages
+*.tgz
+
+docekr-hub-pat.txt
+docekr-hub.tx

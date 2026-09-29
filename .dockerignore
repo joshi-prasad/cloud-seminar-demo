@@ -1,0 +1,9 @@
+.git
+**/.git
+.idea
+.vscode
+helm
+docs
+*.md
+LICENSE
+app/*_test.go

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saved — Cloud Seminar Demo</title>
+  <style>
+    body { font-family: Georgia, "Times New Roman", serif; background: #f4f6f8; margin: 0; color: #1c2833; }
+    main { max-width: 40rem; margin: 2.5rem auto; background: #fff; padding: 2rem; border: 1px solid #d5dde5; }
+    h1 { font-family: system-ui, sans-serif; font-size: 1.6rem; margin-top: 0; }
+    .ok { background: #e7f6ec; border: 1px solid #b7e1c1; padding: 0.75rem 1rem; }
+    pre { background: #f4f6f8; padding: 0.75rem 1rem; overflow-x: auto; }
+    a.button { font-family: system-ui, sans-serif; margin-top: 1.25rem; background: #1f4e79; color: #fff; text-decoration: none; padding: 0.6rem 1.2rem; display: inline-block; }
+    footer { font-family: system-ui, sans-serif; color: #5d6d7e; font-size: 0.9rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Message saved</h1>
+    <p class="ok">Your message was saved.</p>
+    <p>Thanks, {{.Name}}.</p>
+    <p>Object key:</p>
+    <pre><code>{{.Key}}</code></pre>
+    <p>Bucket <code>{{.Bucket}}</code> in <code>{{.Region}}</code>.</p>
+    <p>The Pod does not keep this message. Amazon S3 does.</p>
+    <a class="button" href="/">Back to the form</a>
+    <footer>{{.AppName}} {{.Version}}</footer>
+  </main>
+</body>
+</html>

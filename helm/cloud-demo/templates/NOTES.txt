@@ -1,0 +1,19 @@
+Release {{ .Release.Name }} is installed in namespace {{ .Release.Namespace }}.
+
+Service {{ include "cloud-demo.fullname" . }} ({{ .Values.service.type }}) forwards port {{ .Values.service.port }} to container port {{ .Values.application.port }}.
+Image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+S3 bucket: {{ .Values.aws.s3Bucket }} ({{ .Values.aws.region }})
+
+{{- if eq .Values.service.type "NodePort" }}
+
+On the EC2 VM:
+
+  export NODE_PORT=$(kubectl get svc {{ include "cloud-demo.fullname" . }} -n {{ .Release.Namespace }} -o jsonpath='{.spec.ports[0].nodePort}')
+  curl -sS "http://127.0.0.1:${NODE_PORT}/health"
+
+From a browser, open http://<ec2-public-ip>:${NODE_PORT}/
+The instance security group must allow that NodePort.
+{{- else if eq .Values.service.type "ClusterIP" }}
+
+  kubectl port-forward svc/{{ include "cloud-demo.fullname" . }} 8080:{{ .Values.service.port }}
+{{- end }}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cloud Seminar Demo</title>
+  <style>
+    body { font-family: Georgia, "Times New Roman", serif; background: #f4f6f8; margin: 0; color: #1c2833; }
+    main { max-width: 40rem; margin: 2.5rem auto; background: #fff; padding: 2rem; border: 1px solid #d5dde5; }
+    h1 { font-family: system-ui, sans-serif; font-size: 1.6rem; margin-top: 0; }
+    p.lead { color: #34495e; }
+    label { font-family: system-ui, sans-serif; display: block; margin-top: 1rem; font-weight: 650; }
+    input, textarea { width: 100%; box-sizing: border-box; margin-top: 0.35rem; padding: 0.55rem; font-size: 1rem; border: 1px solid #b0bec5; }
+    textarea { min-height: 7rem; }
+    button { font-family: system-ui, sans-serif; margin-top: 1.25rem; background: #1f4e79; color: #fff; border: 0; padding: 0.6rem 1.2rem; font-size: 1rem; cursor: pointer; }
+    .error { background: #fdecea; border: 1px solid #e6b0aa; padding: 0.75rem 1rem; }
+    footer { font-family: system-ui, sans-serif; color: #5d6d7e; font-size: 0.9rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Cloud Seminar Demo</h1>
+    <p class="lead">Send a message. The application stores it as a JSON object in Amazon S3.</p>
+    {{if .Error}}<p class="error">{{.Error}}</p>{{end}}
+    <form method="post" action="/submit">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" value="{{.Name}}" autocomplete="name">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="text" value="{{.Email}}" autocomplete="email">
+      <label for="message">Message</label>
+      <textarea id="message" name="message">{{.Message}}</textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <footer>{{.AppName}} {{.Version}} · <a href="/info">runtime info</a></footer>
+  </main>
+</body>
+</html>
